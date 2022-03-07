@@ -29,5 +29,7 @@
                     <span class="search-trigger js-search-trigger"><i class="fa fa-search" aria-hidden="true"></i></span>
                 </div>
             </div>
+
+            
         </div>
     </header>

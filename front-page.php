@@ -15,6 +15,7 @@
         <div class="full-width-split__inner">
             <h2 class="headline headline--small-plus t-center">Upcoming Events</h2>
 
+
             <?php
             $today = date('Ymd');
             $homepageEvents = new WP_Query(array(
@@ -22,7 +23,7 @@
                 'post_type' => 'event',
                 'meta_key' => 'event_date',
                 'orderby' => 'meta_value_num',
-                'orde' => 'ASC',
+                'order' => 'ASC',
                 'meta_query' => array(
                     array(
                         'key' => 'event_date',
@@ -32,10 +33,11 @@
                     )
                 )
             ));
+
             while ($homepageEvents->have_posts()) {
                 $homepageEvents->the_post(); ?>
                 <div class="event-summary">
-                    <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
+                    <a class="event-summary__date t-center" href="#">
                         <span class="event-summary__month"><?php
                                                             $eventDate = new DateTime(get_field('event_date'));
                                                             echo $eventDate->format('M')
@@ -47,13 +49,13 @@
                         <p><?php if (has_excerpt()) {
                                 echo get_the_excerpt();
                             } else {
-                                echo wp_trim_words(get_the_content(), 22);
-                            }; ?><a href="<?php the_permalink(); ?>" class="nu gray">Learn more</a></p>
+                                echo wp_trim_words(get_the_content(), 18);
+                            } ?> <a href="<?php the_permalink(); ?>" class="nu gray">Learn more</a></p>
                     </div>
                 </div>
-
             <?php }
             ?>
+
 
             <p class="t-center no-margin"><a href=" <?php echo get_post_type_archive_link('event') ?>" class="btn btn--blue">View All Events</a></p>
 
